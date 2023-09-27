@@ -1,0 +1,70 @@
+<th:block th:fragment="loginForm">
+    <form th:action="@{/login}" th:method="post">
+        <div class="mb-3">
+            <label for="inputUsername" class="form-label">User name:</label>
+            <input type="text" class="form-control" id="inputUsername" aria-describedby="usernameHelp" name="username" placeholder="Username"/>
+        </div>
+        <div class="mb-3">
+            <label for="inputPassword" class="form-label">Password</label>
+            <input type="password" class="form-control" id="inputPassword" name="password" placeholder="Password"/>
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+</th:block>
+
+<th:block th:fragment="registerForm">
+    <form th:action="@{/registration}" method="post" th:object="${user}">
+
+        <div class="mb-3">
+            <label for="inputUsername" class="form-label">Login</label>
+            <input type="text" class="form-control" th:errorclass="is-invalid" placeholder="Login*" id="inputUsername" name="username"
+                   th:field="*{username}"/>
+            <div th:if="${usernameError}" class="invalid-feedback" th:text="${usernameError}">
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="inputFirstName" class="form-label">First Name</label>
+            <input type="text" class="form-control" th:errorclass="is-invalid" placeholder="FirstName*" id="inputFirstName" name="firstName" th:field="*{firstName}">
+            <div th:if="${firstNameError}" class="invalid-feedback" th:text="${firstNameError}">
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="inputLastName" class="form-label">Last Name</label>
+            <input type="text" class="form-control" th:errorclass="is-invalid" placeholder="LastName*" id="inputLastName" name="lastName" th:field="*{lastName}">
+            <div th:if="${lastNameError}" class="invalid-feedback" th:text="${lastNameError}">
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="inputDate" class="form-label">Birth Date</label>
+            <input type="date" class="form-control" th:errorclass="is-invalid" placeholder="DateOfBirth*" id="inputDate" name="birthDate" th:field="*{birthDate}">
+            <div th:if="${birthDateError}" class="invalid-feedback" th:text="${birthDateError}">
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="inputEmail" class="form-label">Email</label>
+            <input type="email" class="form-control" th:errorclass="is-invalid" placeholder="Email*" id="inputEmail" name="email" th:field="*{email}">
+            <div th:if="${emailError}" class="invalid-feedback" th:text="${emailError}">
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="userName" class="form-label">Password</label>
+            <input type="password" class="form-control" th:errorclass="is-invalid" placeholder="Password*"
+                   name="password" th:field="*{password}">
+            <div th:if="${passwordError}" class="invalid-feedback" th:text="${passwordError}">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Register</button>
+
+    </form>
+</th:block>
+
+<th:block th:if="${authUser}" th:fragment="logoutForm">
+    <form th:action="@{/logout}" method="post" class="d-flex nav-link active me-auto">
+        <input type="submit" class="btn btn-outline-light" value="Sign Out"/>
+    </form>
+</th:block>
+

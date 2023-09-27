@@ -1,0 +1,32 @@
+<th:block th:replace="~{parts/bars :: topBar}"/>
+
+<div class="container mt-3 ">
+    <div class="row row-cols-2 row-cols-md-3 g-4"  id="car-list" data-masonry='{"percentPosition": true }'>
+        <div th:each="car : ${cars}" class="col grid-item">
+            <div class="card mb-3" style=" max-width: 400px" >
+                <img th:src="@{/img/} + ${car.getImg}" class="card-img-top" alt="CarPic"/>
+                <div class="card-body">
+                    <div class="row row-cols-lg-auto ">
+                        <h2 class="card-title" th:text="${car.getBrand() + ' ' + car.getModel()}"></h2>
+                        <a th:href="@{rental/{carId} (carId = ${car.getId()})}"
+                           class="btn btn-outline-dark ">Rent!</a>
+                    </div>
+                    <p class="card-text" th:text="${car.getGearBox() + ' ' + car.getEngineCapacity()}"></p>
+                    <h2 class="card-text" style="margin-right: 10px" th:text="${car.getDailyPrice() + '$'}"></h2>
+                    <p class="card-text" style="margin-top: 5px">/ за добу прокату</p>
+                    <h4>Двигун:</h4>
+                    <p class="text-gray" th:text="${car.getEngineCapacity() +'л(' + car.getFuelType() + ')'}"></p>
+                    <h4>Витрати пального:</h4>
+                    <p class="text-gray" th:text="${car.getFuelConsumption()+'л(%)/100км'}"></p>
+                    <h4>Коробка:</h4>
+                    <p class="text-gray" th:text="${car.getGearBox()}"></p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<th:block th:replace="~{parts/bars :: bottomBar}"/>
+

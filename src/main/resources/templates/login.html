@@ -1,0 +1,12 @@
+<th:block th:replace="~{parts/bars :: topBar}"/>
+<div class="container mt-3">
+    <div th:if="${param.error}" class="alert alert-danger">
+        Invalid username or password.
+    </div>
+    <div th:if="${param.logout}" class="alert alert-danger">
+        You have been logged out.
+    </div>
+
+    <th:block th:replace="~{parts/forms :: loginForm}"/>
+</div>
+<th:block th:replace="~{parts/bars :: bottomBar}"/>

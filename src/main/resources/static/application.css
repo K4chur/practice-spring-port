@@ -1,0 +1,384 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+:root {
+    --black: #1C1A1A;
+    --main_back: #F0F0F0;
+    --main_gray: #ADA8A8;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica;
+}
+
+body, html {
+    background-color: var(--main_back);
+    height: 100%;
+}
+
+/*Navigation*/
+
+.navigation_container {
+    background-color: var(--black);
+}
+
+header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 20px 50px;
+    box-shadow: 0 1px 8px #ddd;
+}
+
+#nav-title {
+    margin-right: auto;
+    font-weight: bold;
+    color: #fff;
+}
+
+header li {
+    list-style: none;
+    display: inline-block;
+
+    padding-right: 20px;
+}
+
+header a {
+    text-decoration: none;
+    color: var(--main_gray);
+    font-weight: bold;
+    font-size: 20;
+    transition: all 0.3s ease 0s;
+}
+
+header a:hover {
+    color: #fff;
+}
+
+.align-left {
+    margin-right: auto;
+}
+
+.align-right {
+    margin-left: auto;
+}
+
+/*Sign in page------------------------*/
+
+.main_form {
+    width: 300px;
+    height: auto;
+    margin: auto;
+    margin-top: 70px;
+    padding: 20px 40px 20px 40px;
+    border-radius: 30px;
+    background-color: #fff;
+    box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+}
+
+.main_form_title {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+
+.form_item {
+    margin: 30px 0;
+    width: 100%;
+}
+
+input {
+    display: block;
+    outline: none;
+    border-radius: 8px;
+    border-color: var(--black);
+    border-width: 1px;
+    width: 100%;
+    margin: auto;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.btn {
+    color: #fff;
+    background-color: var(--black);
+    width: 100%;
+    border-radius: 8px;
+    border: var(--black);
+    padding: 10px;
+}
+
+.btn:hover {
+    background-color: rgb(124, 179, 41);
+}
+/*--Danger-Alert-Styles--------------*/
+
+.danger-alert {
+    padding: 10px;
+}
+
+.danger-alert * {
+    color: #a11c29;
+}
+/*Home Page--------------------------*/
+
+.wrapper {
+    max-width: 1400px;
+    margin: auto;
+}
+
+.car-container {
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.car-card {
+    width: 650px;
+    height: auto;
+    margin: 25px 25px;
+    padding: 25px;
+    box-sizing: border-box;
+    background-color: #fff;
+    box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+}
+
+.car-info-block {
+    width: 100%;
+}
+
+.car-ditails-block {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.car-name {
+    margin-bottom: 5px;
+}
+
+.text-gray {
+    color: #53555E;
+}
+
+.car-card img {
+    width: 100%;
+    height: 100%;
+
+}
+
+.car-img-block {
+    width: 50%;
+}
+
+.car-addition-info {
+    margin-left: 20px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-item {
+    background: transparent;
+}
+
+.car-addition-info .card-item, hr {
+    margin-bottom: 10px;
+}
+
+.car-addition-info h4 {
+    margin-right: 7px;
+}
+
+.card-btn {
+    margin-top: auto;
+}
+
+.card-btn .btn {
+    border-radius: 0px;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+hr {
+    height: 1px;
+    border: none;
+    background-color: var(--main_gray)
+}
+/*Rent-Car-Form*/
+
+.rent-car-container {
+    width: 700px;
+    height: auto;
+    padding: 30px;
+    box-sizing: border-box;
+    margin: auto;
+    margin-top: 70px;
+    background-color: #fff;
+    box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+
+}
+
+.rent-car-form .car-form-item {
+    margin-bottom: 30px;
+}
+
+.mb-10 {
+    margin-bottom: 10px;
+}
+
+.rent-car-form-car-info {
+    justify-content: space-between;
+}
+
+.rent-car-form-time input[type=time], input[type=date], input[type=datetime-local] {
+    border-radius: 0px;
+    border-color: #ADA8A8;
+}
+
+.rent-car-form-time input[type="time"] {
+    background-color: var(--main_back);
+}
+
+.rent-car-form button {
+    border-radius: 0px;
+}
+
+
+
+/*-Search-Car-Page----------------------------------*/
+
+.search-car-container {
+    width: 1000px;
+    height: 300px;
+    margin: auto;
+    margin-top: 60px;
+    background-color: #fff;
+    box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+}
+
+.search-car-container-title {
+    padding: 30px;
+    box-sizing: border-box;
+    width: 40%;
+    background-color: var(--black);
+}
+
+.search-car-container-title h1 {
+    color: #fff;
+}
+
+.search-car-container-form {
+    padding: 30px;
+    box-sizing: border-box;
+    width: 60%;
+}
+
+.search-car-container-form h2{
+    margin: auto 0;
+}
+
+.input-group {
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.search-car-container-form input {
+    border-radius: 0;
+    width: 110px;
+    margin-left: 10px;
+    font-size: medium;
+}
+
+.form-select {
+    border-radius: 0;
+    border-width: 1px;
+    border-color: var(--black);
+    background-color: transparent;
+    padding: 10px;
+    width: 230px;
+    font-size: medium;
+}
+
+
+/*-Profile-Page------------------------------------*/
+
+.default-container {
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #fff;
+    box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+}
+
+.profile-data-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 60px;
+}
+
+.profile-data-container a{
+    width: auto;
+    border-radius: 0px;
+    text-decoration: none;
+}
+
+.profile-data-container h2{
+    margin: auto;
+}
+
+
+.rental-info-card-img img{
+    height: 200px;
+}
+
+.rental-info-list-title {
+    margin-top: 50px;
+}
+
+.rental-info {
+    margin-left: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.rental-info-car-name * {
+    text-align: center;
+}
+
+.rental-info-car-info div {
+    margin-right: 50px;
+}
+
+.rental-info-time {
+    background-color: #F0F0F0;
+    box-sizing: border-box;
+    padding: 5px;
+    justify-content: space-around;
+}

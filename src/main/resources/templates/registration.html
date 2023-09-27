@@ -1,0 +1,8 @@
+<th:block th:replace="~{parts/bars :: topBar}"/>
+
+<div class="container mt-3">
+    <p th:if="${message}" th:text="${message}" class="alert alert-danger"></p>
+    <th:block th:replace="~{parts/forms :: registerForm}"/>
+</div>
+
+<th:block th:replace="~{parts/bars :: bottomBar}"/>

@@ -1,0 +1,11 @@
+<th:block th:replace="~{parts/bars :: topBar}"/>
+
+<div class="position-absolute top-50 start-50 translate-middle">
+    <h5 class="align-middle" > Hello, <span th:text="${username ?: 'Guest'}"></span></h5>
+</div>
+<div class="position-absolute top-50 start-50 translate-middle">
+    <br/>
+    <br/>
+    <span>That is the best solution for your rental car</span>
+</div>
+<th:block th:replace="~{parts/bars :: bottomBar}"/>
