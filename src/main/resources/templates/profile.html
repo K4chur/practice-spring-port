@@ -1,0 +1,79 @@
+<th:block th:replace="~{parts/bars :: topBar}"/>
+
+<div class="container mt-3">
+    <div class="row">
+        <div class="col">
+            <div class="input-group">
+                <div class="input-group-text fw-bold">Username:</div>
+                <span class="form-control" th:text="${user.getUsername()}"></span>
+            </div>
+        </div>
+        <div class="col">
+            <div class="input-group">
+                <div class="input-group-text fw-bold">Full name:</div>
+                <span class="form-control" th:text="${user.getFirstName() + ' ' + user.getLastName}"></span>
+            </div>
+        </div>
+        <div class="col">
+            <div class="input-group">
+                <div class="input-group-text fw-bold">Birth date:</div>
+                <span class="form-control" th:text="${#dates.format(user.getBirthDate(), 'yyyy-MM-dd')}"></span>
+            </div>
+        </div>
+        <div class="col">
+            <div class="input-group">
+                <div class="input-group-text fw-bold">Email:</div>
+                <span class="form-control" th:text="${user.getEmail()}"></span>
+            </div>
+        </div>
+        <div class="col">
+            <a class="btn btn-dark fw-bold" th:href="@{/user/profile/edit}">Edit</a>
+        </div>
+    </div>
+</div>
+<div class="container mt-3">
+    <th:block th:if="${rentals.size() != 0}">
+        <div class="row row-cols-2 row-cols-md-3 g-4" id="car-list" data-masonry='{"percentPosition": true }'>
+            <div th:each="rental : ${rentals}" class="col grid-item">
+                <div class="card mb-3" style=" max-width: 400px">
+                    <img th:src="@{/img/} + ${rental.getCar().getImg}" class="card-img-top" alt="CarPic"/>
+                    <div class="card-body">
+                        <div class="row row-cols-lg-auto ">
+                            <h2 class="card-title"
+                                th:text="${rental.getCar().getBrand() + ' ' + rental.getCar().getModel()}"></h2>
+                        </div>
+                        <div class="input-group mb-1">
+                            <div class="input-group-text fw-bold">Daily price:</div>
+                            <span class="form-control"
+                                  th:text="${rental.getCar().getDailyPrice()}"></span>
+                        </div>
+                        <div class="input-group mb-1" >
+                            <div class="input-group-text fw-bold">Days rented:</div>
+                            <span class="form-control" th:text="${T(com.example.practicespringport.controller.utils.DateUtils).calculateDateDifference(rental.getDateFrom(), rental.getDateTo())}"></span>
+                        </div>
+                        <div class="input-group mb-1">
+                            <div class="input-group-text fw-bold">Total price:</div>
+                            <span class="form-control" th:text="${T(com.example.practicespringport.controller.utils.DateUtils).calculateDateDifference(rental.getDateFrom(), rental.getDateTo())*rental.getCar().getDailyPrice()}"></span>
+                        </div>
+
+                        <div class="input-group mb-1">
+                            <div class="input-group-text fw-bold">Date From:</div>
+                            <span class="form-control"
+                                  th:text="${#dates.format(rental.getDateFrom(), 'yyyy-MM-dd')}"></span>
+                        </div>
+                        <div class="input-group">
+                            <div class="input-group-text fw-bold">Date To:</div>
+                            <span class="form-control"
+                                  th:text="${#dates.format(rental.getDateTo(), 'yyyy-MM-dd')}"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </th:block>
+    <th:block th:if="${rentals.size() == 0}">
+        <h2 class="position-fixed start-50 top-50 translate-middle-x">No rentals found...</h2>
+    </th:block>
+</div>
+
+<th:block th:replace="~{parts/bars :: bottomBar}"/>

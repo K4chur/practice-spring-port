@@ -1,0 +1,36 @@
+<th:block th:fragment="modal">
+    <form th:action="@{/rental}" method="post" th:object="${rent}">
+        <input type="hidden" name="carId" id="carId" th:value="${carId}" />
+        <div class="modal fade" id="modalCar" tabindex="-1" aria-labelledby="modalCarLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="modalCarLabel">Finish your rent...</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row g-3">
+                            <div class="input-group col">
+                                <div class="input-group-text">Date from:</div>
+                                <input type="date" class="form-control" name="dateFrom" id="dateFrom" th:field="*{dateFrom}"/>
+                            </div>
+                            <div class="input-group col">
+                                <div class="input-group-text">Date to:</div>
+                                <input type="date" class="form-control" name="dateTo" id="dateTo" th:field="*{dateTo}"/>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <p>Daily Price: <span id="modalCarPrice"></span></p>
+                            <p>Number of Days: <span id="numberOfDays"></span></p>
+                            <p>Total Price: <span id="totalPrice"></span></p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Rent a car!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</th:block>

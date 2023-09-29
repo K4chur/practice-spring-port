@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -23,12 +24,14 @@ public class Rental {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotEmpty(message = "Ви повинні вказати дату початку аренди.")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Future(message = "Ви не можете арендувати авто в минулому.")
+    @DateRange(message = "Дата початку аренди має бути раніше її закінчення.")
     private Date dateFrom;
 
-    @NotEmpty(message = "Ви повинні вказати дату закінчення аренди.")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Future(message = "Ви не можете арендувати авто в минулому.")
+    @DateRange(message = "Дата початку аренди має бути раніше її закінчення.")
     private Date dateTo;
 
     @ManyToOne

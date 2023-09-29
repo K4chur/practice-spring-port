@@ -9,7 +9,12 @@
                             <div class="row row-cols-lg-auto ">
                                 <h2 class="card-title" th:text="${car.getBrand() + ' ' + car.getModel()}"></h2>
                                 <!--th:href="@{rental/{carId} (carId = ${car.getId()})}"-->
-                                <a class="btn btn-outline-dark " data-bs-toggle="modal" data-bs-target="#modalCar">Rent!</a>
+                                <button class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#modalCar"
+                                        th:data-car-brand="${car.getBrand()}" th:data-car-model="${car.getModel()}"
+                                        th:data-car-daily-price="${car.getDailyPrice()}" th:data-car-id="${car.getId()}">
+                                    Rent!
+                                </button>
+
                             </div>
                             <p class="card-text" th:text="${car.getGearBox() + ' ' + car.getEngineCapacity()}"></p>
                             <h2 class="card-text" style="margin-right: 10px"

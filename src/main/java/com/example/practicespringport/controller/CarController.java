@@ -1,6 +1,7 @@
 package com.example.practicespringport.controller;
 
 import com.example.practicespringport.domain.Car;
+import com.example.practicespringport.domain.Rental;
 import com.example.practicespringport.domain.types.Fuel;
 import com.example.practicespringport.domain.types.GearBox;
 import com.example.practicespringport.repos.CarRepo;
@@ -26,6 +27,7 @@ public class CarController {
             Model model
     ){
         model.addAttribute("cars",carRepo.findAll());
+        model.addAttribute("rent",new Rental());
         return "ourCars";
     }
 
@@ -37,6 +39,8 @@ public class CarController {
         @RequestParam(value = "fuelType",required = false, defaultValue = "None") String fuelType,
         @RequestParam(value = "gearboxType",required = false, defaultValue = "None") String gearboxType
     ){
+        model.addAttribute("rent",new Rental());
+
         List<Car> cars = carRepo.findAll();
         cars = cars.stream().filter(x -> x.getDailyPrice() > priceLow && x.getDailyPrice() < priceHigh).collect(Collectors.toList());
         Fuel fuelLast;
@@ -50,6 +54,7 @@ public class CarController {
             cars = cars.stream().filter(x -> x.getGearBox() == gearLast).collect(Collectors.toList());
         }
         model.addAttribute("cars", cars);
+
         return "searchCars";
     }
 }

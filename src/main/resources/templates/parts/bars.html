@@ -8,24 +8,6 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
               integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
               crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"
-                integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D"
-                crossorigin="anonymous" async></script>
-        <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async="async"></script>
-
-        <script defer>
-            $(document).ready(function () {
-                // Wait for all images inside a specific container to load
-                $('#car-list').imagesLoaded(function () {
-                    // Initialize Masonry after images are loaded
-                    $('#car-list').masonry({
-                        itemSelector: '.grid-item',
-                    });
-                });
-            });
-        </script>
-        <script defer src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-        <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
         <style>
             body {
                 background-image: url('../../static/bg.jpg');
@@ -42,6 +24,77 @@
 
 
 <th:block th:fragment="bottomBar">
+    <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"
+            integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D"
+            crossorigin="anonymous" async></script>
+    <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async="async"></script>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            // Wait for all images inside a specific container to load
+            $('#car-list').imagesLoaded(function () {
+                // Initialize Masonry after images are loaded
+                $('#car-list').masonry({
+                    itemSelector: '.grid-item',
+                });
+            });
+        });
+    </script>
+    <script>
+        // Add an event listener to the date input fields
+        document.getElementById("dateFrom").addEventListener("input", updateTotalPrice);
+        document.getElementById("dateTo").addEventListener("input", updateTotalPrice);
+
+        // Function to calculate and update the total price
+        function updateTotalPrice() {
+            // Get the date values from the input fields
+            var dateFrom = new Date(document.getElementById("dateFrom").value);
+            var dateTo = new Date(document.getElementById("dateTo").value);
+
+            // Calculate the difference between dates in days
+            var timeDifference = dateTo - dateFrom;
+            var numberOfDays = Math.ceil(timeDifference / (1000 * 3600 * 24));
+
+            // Get the daily price from the modal
+            var dailyPrice = parseFloat(document.getElementById("modalCarPrice").textContent);
+
+            // Calculate the total price
+            var totalPrice = dailyPrice * numberOfDays;
+
+            // Update the UI with the calculated values
+            document.getElementById("numberOfDays").textContent = numberOfDays;
+            document.getElementById("totalPrice").textContent = totalPrice.toFixed(2);
+        }
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('button[data-bs-toggle="modal"]').on('click', function () {
+                try {
+                    var carBrand = $(this).data('car-brand');
+                    var carModel = $(this).data('car-model');
+                    var carPrice = $(this).data('car-daily-price');
+                    var carId = $(this).data('car-id');
+
+                    // Check if data attributes were correctly extracted
+                    console.log('Car Brand:', carBrand);
+                    console.log('Car Model:', carModel);
+                    console.log('Car Price:', carPrice);
+                    console.log('Car Id:', carId);
+
+                    // Set the content of the modal elements
+                    $('.modal-title').text(carBrand + ' ' + carModel);
+                    $('#modalCarPrice').text(carPrice);
+                    document.getElementById("carId").value = carId;
+                } catch (error) {
+                    console.error('An error occurred:', error);
+                }
+            });
+        });
+    </script>
     </body>
     </html>
 </th:block>
